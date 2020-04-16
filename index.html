@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
         #map {
-            width: 1649px;
+            width: 1920px;
             height: 832px;
         }
         </style>
@@ -42,7 +42,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[45.079457380163106,5.657260952837344],[45.10691122174209,5.734429640591395]]);
+        }).fitBounds([[45.10917640104823,5.674011290343161],[45.12289782812827,5.718944363540595]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -77,7 +77,8 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2"><strong>Générali</strong><br />' + (feature.properties['Générali'] !== null ? autolinker.link(feature.properties['Générali'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Généraliste</th>\
+                        <td>' + (feature.properties['Généraliste'] !== null ? autolinker.link(feature.properties['Généraliste'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
