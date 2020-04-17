@@ -11,8 +11,8 @@
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
         #map {
-            width: 1920px;
-            height: 832px;
+            width: 1649px;
+            height: 789px;
         }
         </style>
         <title>Offre de santé Claix 2020</title>
@@ -34,6 +34,7 @@
         <script src="data/Infirmier_2.js"></script>
         <script src="data/Kin_3.js"></script>
         <script src="data/Dentiste_4.js"></script>
+        <script src="data/geo_commune_5.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -42,7 +43,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[45.10917640104823,5.674011290343161],[45.12289782812827,5.718944363540595]]);
+        }).fitBounds([[45.08335373138118,5.611572294991029],[45.12452673563543,5.733649825173732]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -77,8 +78,7 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Généraliste</th>\
-                        <td>' + (feature.properties['Généraliste'] !== null ? autolinker.link(feature.properties['Généraliste'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Générali</strong><br />' + (feature.properties['Générali'] !== null ? autolinker.link(feature.properties['Générali'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -275,6 +275,83 @@
         });
         bounds_group.addLayer(layer_Dentiste_4);
         map.addLayer(layer_Dentiste_4);
+        function pop_geo_commune_5(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['geo_commune'] !== null ? autolinker.link(feature.properties['geo_commune'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['annee'] !== null ? autolinker.link(feature.properties['annee'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['object_rid'] !== null ? autolinker.link(feature.properties['object_rid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['idu'] !== null ? autolinker.link(feature.properties['idu'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tex2'] !== null ? autolinker.link(feature.properties['tex2'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['creat_date'] !== null ? autolinker.link(feature.properties['creat_date'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['update_dat'] !== null ? autolinker.link(feature.properties['update_dat'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['commune'] !== null ? autolinker.link(feature.properties['commune'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['lot'] !== null ? autolinker.link(feature.properties['lot'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ogc_fid'] !== null ? autolinker.link(feature.properties['ogc_fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_geo_commune_5_0() {
+            return {
+                pane: 'pane_geo_commune_5',
+                opacity: 1,
+                color: 'rgba(14,154,119,1.0)',
+                dashArray: '10,5,1,5',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(231,113,72,0.0)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_geo_commune_5');
+        map.getPane('pane_geo_commune_5').style.zIndex = 405;
+        map.getPane('pane_geo_commune_5').style['mix-blend-mode'] = 'normal';
+        var layer_geo_commune_5 = new L.geoJson(json_geo_commune_5, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_geo_commune_5',
+            layerName: 'layer_geo_commune_5',
+            pane: 'pane_geo_commune_5',
+            onEachFeature: pop_geo_commune_5,
+            style: style_geo_commune_5_0,
+        });
+        bounds_group.addLayer(layer_geo_commune_5);
+        map.addLayer(layer_geo_commune_5);
             var title = new L.Control();
             title.onAdd = function (map) {
                 this._div = L.DomUtil.create('div', 'info');
@@ -296,7 +373,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/Dentiste_4.png" /> Dentiste': layer_Dentiste_4,'<img src="legend/Kin_3.png" /> Kiné': layer_Kin_3,'<img src="legend/Infirmier_2.png" /> Infirmier': layer_Infirmier_2,'<img src="legend/Gnraliste_1.png" /> Généraliste': layer_Gnraliste_1,"ESRI Standard": layer_ESRIStandard_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/geo_commune_5.png" /> geo_commune': layer_geo_commune_5,'<img src="legend/Dentiste_4.png" /> Dentiste': layer_Dentiste_4,'<img src="legend/Kin_3.png" /> Kiné': layer_Kin_3,'<img src="legend/Infirmier_2.png" /> Infirmier': layer_Infirmier_2,'<img src="legend/Gnraliste_1.png" /> Généraliste': layer_Gnraliste_1,"ESRI Standard": layer_ESRIStandard_0,}).addTo(map);
         setBounds();
         </script>
     </body>
