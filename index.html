@@ -12,7 +12,7 @@
         <style>
         #map {
             width: 1649px;
-            height: 789px;
+            height: 832px;
         }
         </style>
         <title>Offre de santé Claix 2020</title>
@@ -43,7 +43,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[45.08335373138118,5.611572294991029],[45.12452673563543,5.733649825173732]]);
+        }).fitBounds([[45.073539758876265,5.621288260235029],[45.15587022246819,5.852794323497224]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -78,7 +78,8 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2"><strong>Générali</strong><br />' + (feature.properties['Générali'] !== null ? autolinker.link(feature.properties['Générali'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Généraliste</th>\
+                        <td>' + (feature.properties['Généraliste'] !== null ? autolinker.link(feature.properties['Généraliste'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
