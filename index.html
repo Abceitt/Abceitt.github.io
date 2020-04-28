@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
         #map {
-            width: 1649px;
+            width: 1163px;
             height: 832px;
         }
         </style>
@@ -30,11 +30,12 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
-        <script src="data/Gnraliste_1.js"></script>
-        <script src="data/Infirmier_2.js"></script>
-        <script src="data/Kin_3.js"></script>
-        <script src="data/Dentiste_4.js"></script>
-        <script src="data/geo_commune_5.js"></script>
+        <script src="data/Infirmier_1.js"></script>
+        <script src="data/Kin_2.js"></script>
+        <script src="data/Dentiste_3.js"></script>
+        <script src="data/geo_commune_4.js"></script>
+        <script src="data/Orthophoniste_5.js"></script>
+        <script src="data/Gnraliste_6.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -43,7 +44,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[45.073539758876265,5.621288260235029],[45.15587022246819,5.852794323497224]]);
+        }).fitBounds([[45.10875482241417,5.659138272672153],[45.14004974018404,5.721180582691495]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -63,61 +64,7 @@
         });
         layer_ESRIStandard_0;
         map.addLayer(layer_ESRIStandard_0);
-        function pop_Gnraliste_1(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <th scope="row">Généraliste</th>\
-                        <td>' + (feature.properties['Généraliste'] !== null ? autolinker.link(feature.properties['Généraliste'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-        }
-
-        function style_Gnraliste_1_0() {
-            return {
-                pane: 'pane_Gnraliste_1',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/doctor.svg',
-            iconSize: [43.28959999999999, 43.28959999999999]
-        }),
-                interactive: true,
-            }
-        }
-        map.createPane('pane_Gnraliste_1');
-        map.getPane('pane_Gnraliste_1').style.zIndex = 401;
-        map.getPane('pane_Gnraliste_1').style['mix-blend-mode'] = 'normal';
-        var layer_Gnraliste_1 = new L.geoJson(json_Gnraliste_1, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_Gnraliste_1',
-            layerName: 'layer_Gnraliste_1',
-            pane: 'pane_Gnraliste_1',
-            onEachFeature: pop_Gnraliste_1,
-            pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.marker(latlng, style_Gnraliste_1_0(feature));
-            },
-        });
-        bounds_group.addLayer(layer_Gnraliste_1);
-        map.addLayer(layer_Gnraliste_1);
-        function pop_Infirmier_2(feature, layer) {
+        function pop_Infirmier_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -138,9 +85,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Infirmier_2_0() {
+        function style_Infirmier_1_0() {
             return {
-                pane: 'pane_Infirmier_2',
+                pane: 'pane_Infirmier_1',
         rotationAngle: 0.0,
         rotationOrigin: 'center center',
         icon: L.icon({
@@ -150,27 +97,27 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Infirmier_2');
-        map.getPane('pane_Infirmier_2').style.zIndex = 402;
-        map.getPane('pane_Infirmier_2').style['mix-blend-mode'] = 'normal';
-        var layer_Infirmier_2 = new L.geoJson(json_Infirmier_2, {
+        map.createPane('pane_Infirmier_1');
+        map.getPane('pane_Infirmier_1').style.zIndex = 401;
+        map.getPane('pane_Infirmier_1').style['mix-blend-mode'] = 'normal';
+        var layer_Infirmier_1 = new L.geoJson(json_Infirmier_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Infirmier_2',
-            layerName: 'layer_Infirmier_2',
-            pane: 'pane_Infirmier_2',
-            onEachFeature: pop_Infirmier_2,
+            dataVar: 'json_Infirmier_1',
+            layerName: 'layer_Infirmier_1',
+            pane: 'pane_Infirmier_1',
+            onEachFeature: pop_Infirmier_1,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_Infirmier_2_0(feature));
+                return L.marker(latlng, style_Infirmier_1_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Infirmier_2);
-        map.addLayer(layer_Infirmier_2);
-        function pop_Kin_3(feature, layer) {
+        bounds_group.addLayer(layer_Infirmier_1);
+        map.addLayer(layer_Infirmier_1);
+        function pop_Kin_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -191,9 +138,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Kin_3_0() {
+        function style_Kin_2_0() {
             return {
-                pane: 'pane_Kin_3',
+                pane: 'pane_Kin_2',
         rotationAngle: 0.0,
         rotationOrigin: 'center center',
         icon: L.icon({
@@ -203,27 +150,27 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Kin_3');
-        map.getPane('pane_Kin_3').style.zIndex = 403;
-        map.getPane('pane_Kin_3').style['mix-blend-mode'] = 'normal';
-        var layer_Kin_3 = new L.geoJson(json_Kin_3, {
+        map.createPane('pane_Kin_2');
+        map.getPane('pane_Kin_2').style.zIndex = 402;
+        map.getPane('pane_Kin_2').style['mix-blend-mode'] = 'normal';
+        var layer_Kin_2 = new L.geoJson(json_Kin_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Kin_3',
-            layerName: 'layer_Kin_3',
-            pane: 'pane_Kin_3',
-            onEachFeature: pop_Kin_3,
+            dataVar: 'json_Kin_2',
+            layerName: 'layer_Kin_2',
+            pane: 'pane_Kin_2',
+            onEachFeature: pop_Kin_2,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_Kin_3_0(feature));
+                return L.marker(latlng, style_Kin_2_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Kin_3);
-        map.addLayer(layer_Kin_3);
-        function pop_Dentiste_4(feature, layer) {
+        bounds_group.addLayer(layer_Kin_2);
+        map.addLayer(layer_Kin_2);
+        function pop_Dentiste_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -244,9 +191,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Dentiste_4_0() {
+        function style_Dentiste_3_0() {
             return {
-                pane: 'pane_Dentiste_4',
+                pane: 'pane_Dentiste_3',
         rotationAngle: 0.0,
         rotationOrigin: 'center center',
         icon: L.icon({
@@ -256,27 +203,27 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Dentiste_4');
-        map.getPane('pane_Dentiste_4').style.zIndex = 404;
-        map.getPane('pane_Dentiste_4').style['mix-blend-mode'] = 'normal';
-        var layer_Dentiste_4 = new L.geoJson(json_Dentiste_4, {
+        map.createPane('pane_Dentiste_3');
+        map.getPane('pane_Dentiste_3').style.zIndex = 403;
+        map.getPane('pane_Dentiste_3').style['mix-blend-mode'] = 'normal';
+        var layer_Dentiste_3 = new L.geoJson(json_Dentiste_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Dentiste_4',
-            layerName: 'layer_Dentiste_4',
-            pane: 'pane_Dentiste_4',
-            onEachFeature: pop_Dentiste_4,
+            dataVar: 'json_Dentiste_3',
+            layerName: 'layer_Dentiste_3',
+            pane: 'pane_Dentiste_3',
+            onEachFeature: pop_Dentiste_3,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_Dentiste_4_0(feature));
+                return L.marker(latlng, style_Dentiste_3_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Dentiste_4);
-        map.addLayer(layer_Dentiste_4);
-        function pop_geo_commune_5(feature, layer) {
+        bounds_group.addLayer(layer_Dentiste_3);
+        map.addLayer(layer_Dentiste_3);
+        function pop_geo_commune_4(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -324,9 +271,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_geo_commune_5_0() {
+        function style_geo_commune_4_0() {
             return {
-                pane: 'pane_geo_commune_5',
+                pane: 'pane_geo_commune_4',
                 opacity: 1,
                 color: 'rgba(14,154,119,1.0)',
                 dashArray: '10,5,1,5',
@@ -339,20 +286,126 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_geo_commune_5');
-        map.getPane('pane_geo_commune_5').style.zIndex = 405;
-        map.getPane('pane_geo_commune_5').style['mix-blend-mode'] = 'normal';
-        var layer_geo_commune_5 = new L.geoJson(json_geo_commune_5, {
+        map.createPane('pane_geo_commune_4');
+        map.getPane('pane_geo_commune_4').style.zIndex = 404;
+        map.getPane('pane_geo_commune_4').style['mix-blend-mode'] = 'normal';
+        var layer_geo_commune_4 = new L.geoJson(json_geo_commune_4, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_geo_commune_5',
-            layerName: 'layer_geo_commune_5',
-            pane: 'pane_geo_commune_5',
-            onEachFeature: pop_geo_commune_5,
-            style: style_geo_commune_5_0,
+            dataVar: 'json_geo_commune_4',
+            layerName: 'layer_geo_commune_4',
+            pane: 'pane_geo_commune_4',
+            onEachFeature: pop_geo_commune_4,
+            style: style_geo_commune_4_0,
         });
-        bounds_group.addLayer(layer_geo_commune_5);
-        map.addLayer(layer_geo_commune_5);
+        bounds_group.addLayer(layer_geo_commune_4);
+        map.addLayer(layer_geo_commune_4);
+        function pop_Orthophoniste_5(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Orthophoniste</strong><br />' + (feature.properties['Orthophoniste'] !== null ? autolinker.link(feature.properties['Orthophoniste'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Orthophoniste_5_0() {
+            return {
+                pane: 'pane_Orthophoniste_5',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/psychologist.svg',
+            iconSize: [43.31999999999995, 43.31999999999995]
+        }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Orthophoniste_5');
+        map.getPane('pane_Orthophoniste_5').style.zIndex = 405;
+        map.getPane('pane_Orthophoniste_5').style['mix-blend-mode'] = 'normal';
+        var layer_Orthophoniste_5 = new L.geoJson(json_Orthophoniste_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Orthophoniste_5',
+            layerName: 'layer_Orthophoniste_5',
+            pane: 'pane_Orthophoniste_5',
+            onEachFeature: pop_Orthophoniste_5,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Orthophoniste_5_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Orthophoniste_5);
+        map.addLayer(layer_Orthophoniste_5);
+        function pop_Gnraliste_6(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Généraliste</strong><br />' + (feature.properties['Généraliste'] !== null ? autolinker.link(feature.properties['Généraliste'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Gnraliste_6_0() {
+            return {
+                pane: 'pane_Gnraliste_6',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/doctor.svg',
+            iconSize: [43.28959999999999, 43.28959999999999]
+        }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Gnraliste_6');
+        map.getPane('pane_Gnraliste_6').style.zIndex = 406;
+        map.getPane('pane_Gnraliste_6').style['mix-blend-mode'] = 'normal';
+        var layer_Gnraliste_6 = new L.geoJson(json_Gnraliste_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Gnraliste_6',
+            layerName: 'layer_Gnraliste_6',
+            pane: 'pane_Gnraliste_6',
+            onEachFeature: pop_Gnraliste_6,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Gnraliste_6_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Gnraliste_6);
+        map.addLayer(layer_Gnraliste_6);
             var title = new L.Control();
             title.onAdd = function (map) {
                 this._div = L.DomUtil.create('div', 'info');
@@ -374,7 +427,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/geo_commune_5.png" /> geo_commune': layer_geo_commune_5,'<img src="legend/Dentiste_4.png" /> Dentiste': layer_Dentiste_4,'<img src="legend/Kin_3.png" /> Kiné': layer_Kin_3,'<img src="legend/Infirmier_2.png" /> Infirmier': layer_Infirmier_2,'<img src="legend/Gnraliste_1.png" /> Généraliste': layer_Gnraliste_1,"ESRI Standard": layer_ESRIStandard_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/Gnraliste_6.png" /> Généraliste': layer_Gnraliste_6,'<img src="legend/Orthophoniste_5.png" /> Orthophoniste': layer_Orthophoniste_5,'<img src="legend/geo_commune_4.png" /> geo_commune': layer_geo_commune_4,'<img src="legend/Dentiste_3.png" /> Dentiste': layer_Dentiste_3,'<img src="legend/Kin_2.png" /> Kiné': layer_Kin_2,'<img src="legend/Infirmier_1.png" /> Infirmier': layer_Infirmier_1,"ESRI Standard": layer_ESRIStandard_0,}).addTo(map);
         setBounds();
         </script>
     </body>
